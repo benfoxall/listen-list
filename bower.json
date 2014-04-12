@@ -1,0 +1,19 @@
+{
+  "name": "listen-list",
+  "version": "0.0.0",
+  "authors": [
+    "Ben Foxall <benfoxall@gmail.com>"
+  ],
+  "description": "List of albums on spotify that I want to check out",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  }
+}
