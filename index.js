@@ -58,11 +58,14 @@ everyauth
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 
 app.use(bodyParser());
 app.use(cookieParser())
-// app.use(session({ secret: 'keyboard cat', key: 'sid', cookie: { secure: true }}))
-app.use(session({secret: 'whodunnit'}))
+
+var opts = {url:process.env.REDISTOGO_URL}
+
+app.use(session({ store: new RedisStore(opts), secret: process.env.SECRET }))
 
 
 app.use(everyauth.middleware(app));

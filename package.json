@@ -28,6 +28,8 @@
     "dotenv": "~0.2.7",
     "cookie-parser": "~1.0.1",
     "express-session": "~1.0.2",
-    "mongoose-findorcreate": "~0.1.2"
+    "mongoose-findorcreate": "~0.1.2",
+    "connect-redis": "~2.0.0",
+    "heroku-redis-client": "~0.3.3"
   }
 }
