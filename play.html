@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Listen List</title>
+
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!--link href="bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      iframe{max-width: 100%}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="page-header">
+        <h1>Listen List <small>keep track of albums that you want to check out</small></h1>
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-md-7">
+          <div class="list-group">
+
+            <div class="list-group-item list-group-item-success">
+              <h2>
+                  Here and Nowhere Else
+                  <small>- Cloud Nothings</small>
+              </h2>
+              <p>
+                <strong>Why:</strong> 
+                heard this on pitchfork, think it's worth checking out - really like the first song</dd>
+              </p>
+
+
+              <div class="row">
+                <div class="col-sm-5 col-md-7">
+                  <a href="http://open.spotify.com/album/31hI5dQfm3EiNfzEPeny5k" data-album-id="31hI5dQfm3EiNfzEPeny5k">
+                    <i class="glyphicon glyphicon-play"></i> Play
+                  </a>
+                  <!--iframe src="https://embed.spotify.com/?uri=spotify:album:31hI5dQfm3EiNfzEPeny5k" width="300" height="380" frameborder="0" allowtransparency="true"></iframe-->
+                </div>
+
+                <div class="col-sm-7 col-md-5">
+                  <form role="form">
+                    <h3>Archive</h3>
+                    <div class="form-group">
+                      <label for="prior" class="sr-only">What you thought about it</label>
+                      <textarea name="prior" class="form-control" rows="4" placeholder="What you thought about it"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-success btn-block">Archive</button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+
+
+
+ 
+            </div>
+
+            <div class="list-group-item">
+              <h2>
+                  Here and Nowhere Else
+                  <small>- Cloud Nothings</small>
+              </h2>
+            </div>
+
+            <div class="list-group-item">
+              <h2>
+                  Here and Nowhere Else
+                  <small>- Cloud Nothings</small>
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <h3>Add a new album</h3>
+          <div class="well">
+            <form role="form">
+              <div class="form-group">
+                <label for="query" class="control-label">Spotify URI <span id="query-result"><i class="glyphicon glyphicon-ok" ></i></span></label>
+                <input type="text" id="query" name="query" class="form-control input-lg" placeholder="spotify:album:&hellip;" pattern="spotify:album:[0-9a-zA-Z]+$" required/>
+              </div>
+              <div class="form-group">
+                <label for="prior">Why</label>
+                <textarea name="prior" class="form-control input-lg" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="listen.js"></script>
+  </body>
+</html>
