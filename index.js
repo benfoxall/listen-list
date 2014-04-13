@@ -60,14 +60,43 @@ app.post('/lists/:id', function(req, res, next){
 
 			album.attempt_populate(function(){
 				album.save(function(err, album){
-				  if (err) next(err);
-				  else res.redirect("/lists/" + req.params.id)
+				  if (err) return next(err);
+				  res.redirect("/lists/" + req.params.id)
 				});
 
 			});
 		}
 	});
 
+})
+
+app.post('/lists/:list_id/:id', function (req, res, next){
+	// update an element
+	if(req.param('destroy')){
+		models.Album.remove({
+			_id:   req.params.id,
+			_list: req.params.list_id
+		}, function (err){
+			if (err) return mext(err);
+			res.redirect("/lists/" + req.params.list_id)
+		})		
+	} else {
+		models.Album.findOneAndUpdate({
+			_id:   req.params.id,
+			_list: req.params.list_id
+		}, 
+		{post: req.param('post')},
+		function (err){
+			if (err) return mext(err);
+			res.redirect("/lists/" + req.params.list_id)
+		})	
+	}
+
+
+	// Tank.remove({ size: 'large' }, function (err) {
+ //  if (err) return handleError(err);
+ //  // removed!
+	// });
 })
 
 app.get('/play', function(req, res){

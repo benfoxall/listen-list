@@ -8,9 +8,16 @@ $(function(){
 		$(this)
 			.closest('.list-group-item').toggleClass('expanded')
 			.siblings().removeClass('expanded');
+
+		$('[data-deferred-iframe]', $(this).closest('.list-group-item')).each(function(){
+			var $this = $(this);
+			var params = $.extend({src:$this.data('deferred-iframe')},$this.data('deferred-iframe-params'))
+			var $next = $('<iframe>', params);
+			$this.replaceWith($next);
+		})
 	})
 
-	$('#query').on('change',function(){
+	$('#uri').on('change',function(){
 		var $this = $(this), 
 			$result = $('#query-result');
 

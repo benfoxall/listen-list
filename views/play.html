@@ -49,7 +49,8 @@
           {{#albums}}
 
             <div class="list-group-item">
-              
+            
+
               <h2>
                   {{name}}
                   <small>- {{artist}}</small>
@@ -63,28 +64,39 @@
                 <strong>Why:</strong> 
                 {{prior}}
               </p>
+              {{#post}}
+                <p>
+                  <strong>Thoughts:</strong>
+                  {{post}}
+                </p>
+              {{/post}}
 
 
               <div class="row extra-content">
                 <div class="col-sm-5 col-md-7">
-                  <!--a href="http://open.spotify.com/album/31hI5dQfm3EiNfzEPeny5k" data-album-id="31hI5dQfm3EiNfzEPeny5k">
-                    <i class="glyphicon glyphicon-play"></i> Play
-                  </a-->
-                  <!-- <iframe src="https://embed.spotify.com/?uri={{uri}}" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
+                  <div data-deferred-iframe="https://embed.spotify.com/?uri={{uri}}" data-deferred-iframe-params='{"width":300,"height":380,"frameborder":0,"allowtransparency":"true"}'>
+                  </div>
                 </div>
 
                 <div class="col-sm-7 col-md-5">
-                  <form role="form">
+                  <form role="form" method="post" action="/lists/{{list._id}}/{{_id}}">
                     <h3>Archive</h3>
                     <div class="form-group">
-                      <label for="prior" class="sr-only">What you thought about it</label>
-                      <textarea name="prior" class="form-control" rows="4" placeholder="What you thought about it"></textarea>
+                      <label for="post" class="sr-only">What you thought about it</label>
+                      <textarea name="post" class="form-control" rows="4" placeholder="What you thought about it"></textarea>
                     </div>
                     <div class="form-group">
                       <button type="submit" class="btn btn-success btn-block">Archive</button>
                     </div>
                   </form>
+
+                  <form role="form" method="post" class="destroy" action="/lists/{{list._id}}/{{_id}}">
+                    <button type="submit" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-trash"></i></button>
+                    <input type="hidden" name="destroy" value="true" />
+                  </form>
                 </div>
+
+
 
               </div>
             </div>
