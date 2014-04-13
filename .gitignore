@@ -1,1 +1,2 @@
-bower_components/
+static/assets
+node_modules
