@@ -19,9 +19,22 @@
 
     <style type="text/css">
       iframe{max-width: 100%}
+
+      .expand .up  {display:none;}
+      .expand .down{display:block;}
+
+      .expanded .expand .up  {display:block;}
+      .expanded .expand .down{display:none;}
+
+      .extra-content {display:none;}
+      .expanded .extra-content {display:block;}
+
+      .expanded {background-color:#eee;}
+
     </style>
   </head>
   <body>
+    
     <div class="container">
       <div class="page-header">
         <h1>Listen List <small>keep track of albums that you want to check out</small></h1>
@@ -35,10 +48,16 @@
 
           {{#albums}}
 
-            <div class="list-group-item xlist-group-item-success">
+            <div class="list-group-item">
+              
               <h2>
-                  {{uri}}
-                  <small>- Cloud Nothings</small>
+                  {{name}}
+                  <small>- {{artist}}</small>
+
+                  <a href="#" class="expand pull-right">
+                    <i class="down glyphicon glyphicon-collapse-down"></i>
+                    <i class="up   glyphicon glyphicon-collapse-up"></i>
+                  </a>
               </h2>
               <p>
                 <strong>Why:</strong> 
@@ -46,7 +65,7 @@
               </p>
 
 
-              <div class="row">
+              <div class="row extra-content">
                 <div class="col-sm-5 col-md-7">
                   <!--a href="http://open.spotify.com/album/31hI5dQfm3EiNfzEPeny5k" data-album-id="31hI5dQfm3EiNfzEPeny5k">
                     <i class="glyphicon glyphicon-play"></i> Play

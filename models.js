@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var request = require('request');
+var qs = require('querystring');
 
 mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/test');
 
@@ -20,9 +22,29 @@ var AlbumSchema = mongoose.Schema({
   post     : String,
 
   // todo - populate server side
-  title    : String,
+  name     : String,
   artist   : String
 });
+
+
+AlbumSchema.methods.attempt_populate = function (callback) {
+	var uri = this.uri;
+
+	var self = this;
+	if(uri){
+		var url = 'http://ws.spotify.com/lookup/1/.json?' + qs.encode({uri:uri});
+		request.get({url:url, json:true}, function(error, response, body){ 
+			try{
+				self.name   = body.album.name;
+				self.artist = body.album.artist
+			} catch (e){
+				console.log("error populating for - '"+uri+"'");
+			}
+			callback && callback()
+		});
+	}
+	
+}
 
 
 exports.List  = mongoose.model('List',  ListSchema)

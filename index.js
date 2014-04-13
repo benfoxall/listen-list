@@ -34,6 +34,7 @@ app.get('/lists/:id', function(req,res, next){
 		else {
 			models.Album
 			.find({ _list: list._id })
+			.sort('-_id')
 			.exec(function (err, albums) {
 			  if (err) return next(err);
 			  console.log('The albums are an array: ', albums);
@@ -46,8 +47,6 @@ app.get('/lists/:id', function(req,res, next){
 // adding an album
 app.post('/lists/:id', function(req, res, next){
 
-	// console.log("____>", req.param("query"))
-
 	models.List.findById(req.params.id, function (err, list) {
 		if(err) next(err)
 		else if(!list) next("list not found");
@@ -59,21 +58,15 @@ app.post('/lists/:id', function(req, res, next){
 				prior: req.param("prior")
 			});
 
-			album.save(function(err, album){
-			  if (err) next(err);
-			  else res.redirect("/lists/" + req.params.id)
-			})
+			album.attempt_populate(function(){
+				album.save(function(err, album){
+				  if (err) next(err);
+				  else res.redirect("/lists/" + req.params.id)
+				});
 
-
+			});
 		}
-		// else res.render('play.html', list)
 	});
-
-	// console.log(req);
-
-	// res.send("ok");
-
-
 
 })
 

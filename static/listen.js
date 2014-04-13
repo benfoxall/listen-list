@@ -3,6 +3,13 @@
 
 $(function(){
 
+	$(document).on('click', '.expand', function(e){
+		e.preventDefault();
+		$(this)
+			.closest('.list-group-item').toggleClass('expanded')
+			.siblings().removeClass('expanded');
+	})
+
 	$('#query').on('change',function(){
 		var $this = $(this), 
 			$result = $('#query-result');
