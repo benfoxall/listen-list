@@ -23,7 +23,6 @@
   </head>
   <body>
     <div class="container">
-
       <div class="page-header">
         <h1>Listen List <small>keep track of albums that you want to check out</small></h1>
       </div>
@@ -34,6 +33,46 @@
         <div class="col-md-7">
           <div class="list-group">
 
+          {{#albums}}
+
+            <div class="list-group-item xlist-group-item-success">
+              <h2>
+                  {{uri}}
+                  <small>- Cloud Nothings</small>
+              </h2>
+              <p>
+                <strong>Why:</strong> 
+                {{prior}}
+              </p>
+
+
+              <div class="row">
+                <div class="col-sm-5 col-md-7">
+                  <!--a href="http://open.spotify.com/album/31hI5dQfm3EiNfzEPeny5k" data-album-id="31hI5dQfm3EiNfzEPeny5k">
+                    <i class="glyphicon glyphicon-play"></i> Play
+                  </a-->
+                  <!-- <iframe src="https://embed.spotify.com/?uri={{uri}}" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
+                </div>
+
+                <div class="col-sm-7 col-md-5">
+                  <form role="form">
+                    <h3>Archive</h3>
+                    <div class="form-group">
+                      <label for="prior" class="sr-only">What you thought about it</label>
+                      <textarea name="prior" class="form-control" rows="4" placeholder="What you thought about it"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-success btn-block">Archive</button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+
+          {{/albums}}
+
+<!--
             <div class="list-group-item list-group-item-success">
               <h2>
                   Here and Nowhere Else
@@ -50,7 +89,7 @@
                   <a href="http://open.spotify.com/album/31hI5dQfm3EiNfzEPeny5k" data-album-id="31hI5dQfm3EiNfzEPeny5k">
                     <i class="glyphicon glyphicon-play"></i> Play
                   </a>
-                  <!--iframe src="https://embed.spotify.com/?uri=spotify:album:31hI5dQfm3EiNfzEPeny5k" width="300" height="380" frameborder="0" allowtransparency="true"></iframe-->
+                  <!- -iframe src="https://embed.spotify.com/?uri=spotify:album:31hI5dQfm3EiNfzEPeny5k" width="300" height="380" frameborder="0" allowtransparency="true"></iframe- ->
                 </div>
 
                 <div class="col-sm-7 col-md-5">
@@ -86,16 +125,19 @@
                   <small>- Cloud Nothings</small>
               </h2>
             </div>
+
+            -->
+
           </div>
         </div>
 
         <div class="col-md-5">
           <h3>Add a new album</h3>
           <div class="well">
-            <form role="form">
+            <form role="form" method="post">
               <div class="form-group">
-                <label for="query" class="control-label">Spotify URI <span id="query-result"><i class="glyphicon glyphicon-ok" ></i></span></label>
-                <input type="text" id="query" name="query" class="form-control input-lg" placeholder="spotify:album:&hellip;" pattern="spotify:album:[0-9a-zA-Z]+$" required/>
+                <label for="uri" class="control-label">Spotify URI <span id="query-result"><i class="glyphicon glyphicon-ok" ></i></span></label>
+                <input type="text" id="uri" name="uri" class="form-control input-lg" placeholder="spotify:album:&hellip;" pattern="spotify:album:[0-9a-zA-Z]+$" required/>
               </div>
               <div class="form-group">
                 <label for="prior">Why</label>
@@ -115,6 +157,6 @@
     <script src="/assets/jquery/dist/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/assets/bootstrap/dist/js/bootstrap.js"></script>
-    <script type="text/javascript" src="listen.js"></script>
+    <script src="/listen.js"></script>
   </body>
 </html>

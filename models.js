@@ -7,7 +7,23 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () { console.log('mongodb connected') });
 
 var ListSchema = mongoose.Schema({
-    name: String
+    name: String,
+    // albums : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Album' }]
 });
 
-exports.List = mongoose.model('List', ListSchema)
+var AlbumSchema = mongoose.Schema({
+  _list    : { type: String, ref: 'List' },
+
+  uri      : String,
+
+  prior    : String,
+  post     : String,
+
+  // todo - populate server side
+  title    : String,
+  artist   : String
+});
+
+
+exports.List  = mongoose.model('List',  ListSchema)
+exports.Album = mongoose.model('Album', AlbumSchema)
