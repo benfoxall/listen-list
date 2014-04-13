@@ -32,24 +32,24 @@ $(function(){
 
 	})
 
-	// search/add form
-	$('form').on('submit', function(e){
-		e.preventDefault();
+	// // search/add form
+	// $('form').on('submit', function(e){
+	// 	e.preventDefault();
 
-		var query = $('.query').val();
+	// 	var query = $('.query').val();
 
-		// test
-		query = 'spotify:album:0hLNDK6qqmScdwxU7kvnXn'
+	// 	// test
+	// 	query = 'spotify:album:0hLNDK6qqmScdwxU7kvnXn'
 
-		if(query){
-			$
-			.get('http://ws.spotify.com/lookup/1/.json',{uri:query})
-			.then(function(data){
-				//render
+	// 	if(query){
+	// 		$
+	// 		.get('http://ws.spotify.com/lookup/1/.json',{uri:query})
+	// 		.then(function(data){
+	// 			//render
 
-			})
-		}
+	// 		})
+	// 	}
 
 		
-	})
+	// })
 })
