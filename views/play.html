@@ -166,16 +166,19 @@
           <h3>Add a new album</h3>
           <div class="well">
             <form role="form" method="post">
+
+              <span class="pull-right btn btn-xs btn-default" id="example">example</span>
+
               <div class="form-group">
                 <label for="uri" class="control-label">Spotify URI <span id="query-result"><i class="glyphicon glyphicon-ok" ></i></span></label>
                 <input type="text" id="uri" name="uri" class="form-control input-lg" placeholder="spotify:album:&hellip;" pattern="spotify:album:[0-9a-zA-Z]+$" required/>
               </div>
               <div class="form-group">
                 <label for="prior">Why</label>
-                <textarea name="prior" class="form-control input-lg" rows="3"></textarea>
+                <textarea id="prior" name="prior" class="form-control input-lg" rows="3" required></textarea>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Add</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" data-loading-text="Adding..." >Add</button>
               </div>
             </form>
           </div>

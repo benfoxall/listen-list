@@ -17,6 +17,28 @@ $(function(){
 		})
 	})
 
+	var ei = 0,
+		examples = [
+			'spotify:album:31hI5dQfm3EiNfzEPeny5k', // dirty projectors
+			'spotify:album:052mYLfLyJmIk0eQ0FL100', // wild beasts
+			'spotify:album:1VmWdRTS027iMB7uQ161EI', // teen
+			'spotify:album:6FIFqclBriPCb0SjWDaHIk', // grizzly bear
+		];
+
+	$('#example').on('click', function(e){
+		e.preventDefault();
+		$('#uri').val(examples[ei]).change();
+
+		ei = (ei+1) % examples.length;
+
+		if(!$('#prior').val()) $('#prior').val("because I clicked the example button")
+	})
+
+	$('[data-loading-text]').click(function () {
+	    var btn = $(this)
+	    btn.button('loading')
+	});
+
 	$('#uri').on('change',function(){
 		var $this = $(this), 
 			$result = $('#query-result');
