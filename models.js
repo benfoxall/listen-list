@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var request = require('request');
 var qs = require('querystring');
+var findOrCreate = require('mongoose-findorcreate')
 
 mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/test');
 
@@ -14,7 +15,9 @@ var ListSchema = mongoose.Schema({
 });
 
 var AlbumSchema = mongoose.Schema({
-  _list    : { type: String, ref: 'List' },
+  _list    : { type: String, ref: 'List' }, // todo - remove
+  
+  _user    : { type: String, ref: 'User' },
 
   uri      : String,
 
@@ -26,6 +29,16 @@ var AlbumSchema = mongoose.Schema({
   artist   : String
 });
 
+var UserSchema = mongoose.Schema({
+	id_str: String,
+	screen_name: String,
+	name: String,
+	location: String,
+	description: String
+});
+
+
+UserSchema.plugin(findOrCreate);
 
 AlbumSchema.methods.attempt_populate = function (callback) {
 	var uri = this.uri;
@@ -49,3 +62,4 @@ AlbumSchema.methods.attempt_populate = function (callback) {
 
 exports.List  = mongoose.model('List',  ListSchema)
 exports.Album = mongoose.model('Album', AlbumSchema)
+exports.User  = mongoose.model('User',  UserSchema)

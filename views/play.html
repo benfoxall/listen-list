@@ -34,6 +34,8 @@
     </style>
   </head>
   <body>
+
+  {{user}}
     
     <div class="container">
       <div class="page-header">
@@ -79,7 +81,7 @@
                 </div>
 
                 <div class="col-sm-7 col-md-5">
-                  <form role="form" method="post" action="/lists/{{list._id}}/{{_id}}">
+                  <form role="form" method="post" action="/users/{{displayedUser.screen_name}}/{{_id}}">
                     <h3>Archive</h3>
                     <div class="form-group">
                       <label for="post" class="sr-only">What you thought about it</label>
@@ -90,7 +92,7 @@
                     </div>
                   </form>
 
-                  <form role="form" method="post" class="destroy" action="/lists/{{list._id}}/{{_id}}">
+                  <form role="form" method="post" class="destroy" action="/users/{{displayedUser.screen_name}}/{{_id}}">
                     <button type="submit" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-trash"></i></button>
                     <input type="hidden" name="destroy" value="true" />
                   </form>

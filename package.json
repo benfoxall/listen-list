@@ -23,6 +23,11 @@
     "consolidate": "~0.10.0",
     "body-parser": "~1.0.1",
     "request": "~2.34.0",
-    "hogan.js": "~2.0.0"
+    "hogan.js": "~2.0.0",
+    "everyauth": "~0.4.5",
+    "dotenv": "~0.2.7",
+    "cookie-parser": "~1.0.1",
+    "express-session": "~1.0.2",
+    "mongoose-findorcreate": "~0.1.2"
   }
 }
