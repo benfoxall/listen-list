@@ -37,7 +37,6 @@ app.get('/lists/:id', function(req,res, next){
 			.sort('-_id')
 			.exec(function (err, albums) {
 			  if (err) return next(err);
-			  console.log('The albums are an array: ', albums);
 			  res.render('play.html', {list:list, albums:albums})
 			})
 		}
